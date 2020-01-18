@@ -7,7 +7,6 @@ module.exports = {
         console.log('Connecting to database')
         mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(result => {
-            console.log(result)
             console.log('Connected to database')
         })
         .catch(err => {

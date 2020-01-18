@@ -3,9 +3,9 @@ const { forwardRequest,
     resolveResponse } = require('../core/index')
 const router = require('express').Router()
 
-router.all('/api/*', (req, res, next) => {
-    resolveResponse(res)
-    resolveRequest(req, (result, request, error) => {
+router.all('*', (req, res) => {
+    resolveRequest(req, (request, service, error) => {
+        resolveResponse(res)
         if ( error ) {
             let status_code
             if ( error.hasOwnProperty('type') ) {
@@ -21,7 +21,7 @@ router.all('/api/*', (req, res, next) => {
             }
             res.status(status_code).json(error)
         } else {
-            forwardRequest(request)
+            forwardRequest(request, service)
             .then(response => {
                 res.json(response)
             })

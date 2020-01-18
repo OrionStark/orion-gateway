@@ -1,37 +1,34 @@
 const axios = require('axios').default
 
-function forwardRequest(request) {
+function forwardRequest(request, service) {
     return new Promise((resolve, reject) => {
         const method = request.method.toLowerCase()
         if ( method === 'get' ) {
             axios({
                 method: method,
-                baseURL: request.host,
+                baseURL: service.base_url + ':' + service.port,
                 url: request.path,
                 responseType: 'json'
             })
             .then(response => {
-                console.log(response)
                 resolve(response)
             })
             .catch(err => {
-                console.log(err)
                 reject(err)
             })
         } else {
             axios({
                 method: method,
-                baseURL: request.host,
+                baseURL: service.base_url + ':' + service.port,
                 url: request.path,
                 responseType: 'json',
-                data: request.body
+                data: request.body,
+                params: request.params
             })
             .then(response => {
-                console.log(response)
                 resolve(response)
             })
             .catch(err => {
-                console.log(err)
                 reject(err)
             })
         }
