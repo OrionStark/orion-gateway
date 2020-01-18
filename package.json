@@ -1,0 +1,24 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "Simple API Gateway",
+  "main": "app/server.js",
+  "scripts": {
+    "start": "nodemon ./app/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robby Muhammad",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "mongoose": "^5.8.7",
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0"
+  }
+}
