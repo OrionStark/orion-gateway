@@ -1,10 +1,8 @@
-const logModel = require('./logs/index')
+const mongoose = require('mongoose')
+const logModel = require('./logs/index')(mongoose)
+const userModel = require('./consumer/index')(mongoose)
 
-function __getLogModel(mongoose) { return logModel(mongoose) }
-function __getServiceModel(mongoose) { return serviceModel(mongoose) }
-
-module.exports = (mongoose) => {
-    return {
-        logModel: __getLogModel(mongoose)
-    }
+module.exports = {
+    logModel,
+    userModel
 }

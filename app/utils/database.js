@@ -13,6 +13,5 @@ module.exports = {
             console.log(err)
             throw Error(err)
         })
-    },
-    mongoose
+    }
 }

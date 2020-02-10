@@ -1,5 +1,5 @@
 services:
-    main-services:
+    firstService:
         port: 3422
         base_url: http://localhost
         endpoints:
@@ -9,14 +9,25 @@ services:
                 - /testing
             put:
                 - /user/*/*/fdf
-                - /item/:query/:query
+                - /item/*/*
             delete:
                 - /user/
                 - /item/
             post: 
                 - /user/create
                 - /item/create
-        enable_auth: false
-        ip_blacklist:
-            - "103.77.77.91"
-            - "103.77.78.111"
+        secret_key: mainServiceIsRestrictedOnly
+    secondService:
+        port: 3400
+        base_url: http://localhost
+        endpoints:
+            get:
+                - /hello
+                - /user/*
+            put:
+                - /user/hello
+            delete:
+                - /user/delete/*
+            post: 
+                - /user/create
+        secret_key: mainServiceIsRestrictedOnly
